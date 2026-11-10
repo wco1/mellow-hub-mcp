@@ -1,9 +1,11 @@
 # Mellow Hub MCP
 
 Mellow Hub is a hosted MCP server and REST API that lets an AI agent (Claude,
-ChatGPT, Cursor and others), or a person, publish and schedule posts to nine
+ChatGPT, Cursor and others), or a person, publish and schedule posts to ten
 social networks: Instagram, TikTok, YouTube, X, LinkedIn, Threads, Bluesky,
-Pinterest and Facebook.
+Pinterest, Facebook and Telegram (channels, through Mellow's own bot). It also
+finds the short videos that took off in a topic on YouTube, TikTok and
+Instagram.
 
 This repository describes the hosted server. Its source code is not published
 here, and there is nothing to build or run locally.
@@ -58,6 +60,14 @@ In claude.ai or ChatGPT, add it as a custom connector with the same URL.
   uploads; `get_metrics` returns post-level views.
 - `connect_channel` hands the person to the Channels page; an agent never
   receives a network password.
+- `trends_search` finds the videos that went furthest above their creator's
+  usual views in a topic, one network a search, with each network's own public
+  figures and a link to every video. `trends_breakdown` says why one worked and
+  drafts the person's own version (it spends AI credits, so it needs a
+  credential allowed to).
+- `list_comments`, `reply_to_comment`, `list_messages`, `reply_to_message` and
+  the auto-reply tools answer Instagram comments and direct messages in the
+  account's name, under an autopilot delegation only.
 
 The full and current tool list, with arguments, is in the documentation.
 
@@ -71,12 +81,12 @@ approve its own posts.
 
 ## Limits, stated plainly
 
-- No team seats, no inbox, and no comment or message management for users in
-  general.
+- No team seats. Comments and messages are Instagram's only, through an
+  account connected for auto-replies.
 - TikTok blocks uploads from an account registered in Russia for everyone but
   the account's owner.
-- Connecting accounts, drafts and validation are free. Publishing needs a
-  subscription after a 7-day trial; plans start at $19 a month.
+- Hub is paid: plans start at $19 a month, after a 7-day trial that starts
+  with a card. Cancel before it ends and nothing is charged.
 
 ## More
 
